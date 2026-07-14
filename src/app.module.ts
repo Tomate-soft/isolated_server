@@ -74,13 +74,17 @@ import { SharedModule } from './v2/modules/shared/shared.module';
     }),
    MongooseModule.forRootAsync({
   imports: [ConfigModule],
-  useFactory: async (configService: ConfigService) => ({
-    uri: configService.get<string>('MONGO_URI'),
-    maxPoolSize: 50,
-    minPoolSize: 10,
-    socketTimeoutMS: 30000,
-    connectTimeoutMS: 10000,
-  }),
+  useFactory: async (configService: ConfigService) => {
+    const uri = configService.get<string>('MONGO_URI');
+    console.log('🔍 MONGO_URI from ConfigService:', uri);
+    return {
+      uri,
+      maxPoolSize: 50,
+      minPoolSize: 10,
+      socketTimeoutMS: 30000,
+      connectTimeoutMS: 10000,
+    };
+  },
   inject: [ConfigService],
 }),
     // MongooseModule.forRoot(
