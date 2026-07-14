@@ -61,7 +61,7 @@ import { ReportsModule as newReporModule } from './app/domains/reports/reports.m
 import { UsersModule as UsersNewModule } from './app/domains/users/users.module';
 import { CheckinModule } from './app/domains/checkin/checkin.module';
 import { BroadcastModule } from './app/domains/broadcast/broadcast.module';
-import { ConfigModule } from '@nestjs/config';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import { EventEmitterModule } from '@nestjs/event-emitter';
 import { BoundedModule } from './v2/modules/bounded/bounded.module';
 import { SharedModule } from './v2/modules/shared/shared.module';
@@ -72,12 +72,17 @@ import { SharedModule } from './v2/modules/shared/shared.module';
       isGlobal: true,
       envFilePath: '.env',
     }),
-    MongooseModule.forRoot(process.env.MONGO_URI, {
-      maxPoolSize: 50, 
-      minPoolSize: 10, 
-      socketTimeoutMS: 30000, 
-      connectTimeoutMS: 10000,
-    }),
+   MongooseModule.forRootAsync({
+  imports: [ConfigModule],
+  useFactory: async (configService: ConfigService) => ({
+    uri: configService.get<string>('MONGO_URI'),
+    maxPoolSize: 50,
+    minPoolSize: 10,
+    socketTimeoutMS: 30000,
+    connectTimeoutMS: 10000,
+  }),
+  inject: [ConfigService],
+}),
     // MongooseModule.forRoot(
     //   process.env.MONGO_URI_HISTORICAL,
     //   { connectionName: 'RS_HISTORICAL' },
