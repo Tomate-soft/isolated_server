@@ -12,6 +12,7 @@ async function bootstrap() {
   app.enableCors({
     origin: [
       'http://localhost:5174',
+      'https://app.tomatesoft.com',
       'http://localhost:5173',
       'http://localhost:3000',
       'https://tomatesoft.com',
