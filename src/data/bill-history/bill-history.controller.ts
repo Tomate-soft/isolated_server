@@ -8,7 +8,7 @@ export class BillHistoryController {
 
   // GET /bill-history
   @Get()
-  async findAll(): Promise<Bills[]> {
+  async findAll(): Promise<void> {
     return this.billHistoryService.findAll();
   }
 

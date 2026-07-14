@@ -78,10 +78,10 @@ import { SharedModule } from './v2/modules/shared/shared.module';
       socketTimeoutMS: 30000, 
       connectTimeoutMS: 10000,
     }),
-    MongooseModule.forRoot(
-      process.env.MONGO_URI_HISTORICAL,
-      { connectionName: 'RS_HISTORICAL' },
-    ),
+    // MongooseModule.forRoot(
+    //   process.env.MONGO_URI_HISTORICAL,
+    //   { connectionName: 'RS_HISTORICAL' },
+    // ),
     EventEmitterModule.forRoot(),
     UsersModule,
     AuthModule,
