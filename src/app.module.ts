@@ -46,7 +46,7 @@ import { AdditionsGroupModule } from './additions-group/additions-group.module';
 import { RewritePeriodModule } from './rewrite-period/rewrite-period.module';
 import { AppController } from './app.controller';
 import { SendMessagesModule } from './send-messages/send-messages.module';
-import { RedisModule } from './data/redis/redis.module';
+// import { RedisModule } from './data/redis/redis.module';
 import { BillHistoryModule } from './data/bill-history/bill-history.module';
 import { BillsTestModule } from './bills-test/bills-test.module';
 import { CounterModule } from './counter/counter.module';
@@ -137,7 +137,7 @@ import { SharedModule } from './v2/modules/shared/shared.module';
     AdditionsGroupModule,
     RewritePeriodModule,
     SendMessagesModule,
-    RedisModule,
+    // RedisModule,
     BillHistoryModule,
     BillsTestModule,
     CounterModule,

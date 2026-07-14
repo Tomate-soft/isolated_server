@@ -21,7 +21,7 @@ import { User } from 'src/schemas/users.schema';
 import { Table } from 'src/schemas/tables/tableSchema';
 import { ENABLE_STATUS, FINISHED_STATUS } from 'src/libs/status.libs';
 import { calculateBillTotal } from 'src/utils/business/CalculateTotals';
-import { RedisService } from 'src/data/redis/redis.service';
+// import { RedisService } from 'src/data/redis/redis.service';
 import { BillsCounter } from 'src/schemas/counters/billsCounter.schema';
 
 @Injectable()
@@ -44,7 +44,7 @@ export class BillsService {
     @InjectModel(OperatingPeriod.name)
     private operatingPeriodModel: Model<OperatingPeriod>,
     private readonly operatingPeriodService: OperatingPeriodService,
-    private readonly redisService: RedisService,
+    // private readonly redisService: RedisService,
   ) {}
 
   async findAll() {
@@ -788,14 +788,14 @@ export class BillsService {
   // TODO: POPULAR PAYMENTS
   // METER EL ID A LAS CUNETAS DE DELIVERY
   async findCurrent(id?: string) {
-    const redis = this.redisService.getClient();
-    const cacheKey = `currentPeriod:${id ?? 'default'}`;
+    // const redis = this.redisService.getClient();
+    // const cacheKey = `currentPeriod:${id ?? 'default'}`;
 
-    // Revisar cache primero
-    const cached = await redis.get(cacheKey);
-    if (cached) {
-      return JSON.parse(cached);
-    }
+    // // Revisar cache primero
+    // const cached = await redis.get(cacheKey);
+    // if (cached) {
+    //   return JSON.parse(cached);
+    // }
     const session = await this.operatingPeriodModel.startSession();
     session.startTransaction();
     try {

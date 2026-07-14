@@ -33,7 +33,7 @@ import {
   MoneyMovementSchema,
 } from 'src/schemas/moneyMovements/moneyMovement.schema';
 import { SendMessagesService } from 'src/send-messages/send-messages.service';
-import { RedisService } from 'src/data/redis/redis.service';
+// import { RedisService } from 'src/data/redis/redis.service';
 import { BillsCounter, BillsCounterSchema } from 'src/schemas/counters/billsCounter.schema';
 
 @Module({
@@ -120,7 +120,7 @@ import { BillsCounter, BillsCounterSchema } from 'src/schemas/counters/billsCoun
     DiscountsService,
     CancellationsService,
     SendMessagesService,
-    RedisService,
+    // RedisService,
   ],
 })
 export class PaymentsModule {}
